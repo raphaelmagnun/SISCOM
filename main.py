@@ -1,5 +1,0 @@
-print("=" * 42)
-print("SISTEMA COMERCIAL - SISCOM")
-print("=" * 42)
-print("Bem-vindo ao sistema!")
-print("Projeto desenvolvido em Python.")
