@@ -1,0 +1,35 @@
+class Produto:
+    # Construtor / Inicializador __init__
+    def __init__ (self, nome, preco, estoque, categoria):
+        self.nome = nome
+        self.preco = preco
+        self.estoque = int(estoque)
+        self.categoria = categoria
+
+    def apresentar(self):
+        return (
+            f'Produto: {self.nome}\n'
+            f'Preço: {self.preco}\n'
+            f'Estoque: {self.estoque}\n'
+            f'Categoria: {self.categoria.nome}\n'
+            )
+
+    def calcular_valor_estoque(self):
+        valor_estoque = self.estoque * self.preco
+        return valor_estoque
+
+    def adicionar_estoque(self, quantidade):
+        if quantidade <= 0:
+            raise ValueError ("A quantidade deve ser maior que zero")
+        self.estoque += quantidade
+        print(f'A quantidade {quantidade} foi adicionada no estoque.')
+        print(f'Quantidade em estoque atual {self.estoque}')
+
+    def remover_estoque(self, quantidade):
+        if quantidade <= 0:
+            raise ValueError ("A quantidade deve ser maior que zero")
+        if self.estoque < quantidade:
+            raise ValueError (f"Estoque insuficiente. Quantidade atual: {self.estoque}")
+        self.estoque -= quantidade
+        print(f'A quantidade {quantidade} foi removida do estoque.')
+        print(f'Quantidade em estoque atual {self.estoque}')
