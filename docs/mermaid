@@ -1,0 +1,40 @@
+```mermaid
+classDiagram
+    class Categoria {
+        +String nome
+        +String descricao
+        +apresentar() String
+    }
+
+    class Fornecedor {
+        +String nome
+        +String telefone
+        +String email
+        +apresentar() String
+    }
+
+    class Produto {
+        +String nome
+        +Float preco
+        +Int estoque
+        +Categoria categoria
+        +Fornecedor fornecedor
+        +apresentar() String
+        +calcular_valor_estoque() Float
+        +adicionar_estoque(quantidade: Int) void
+        +remover_estoque(quantidade: Int) void
+    }
+
+    class MovimentoEstoque {
+        +String tipo
+        +Int quantidade
+        +String data
+        +Produto produto
+        +executar() void
+        +apresentar() String
+    }
+
+    Categoria "1" --> "0..*" Produto : classifica
+    Fornecedor "1" --> "0..*" Produto : fornece
+    Produto "1" --> "0..*" MovimentoEstoque : registra
+```
