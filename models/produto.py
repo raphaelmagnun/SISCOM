@@ -1,35 +1,33 @@
 class Produto:
-    # Construtor / Inicializador __init__
-    def __init__ (self, nome, preco, estoque, categoria):
+    def __init__(self, nome, preco, estoque, categoria, fornecedor):
         self.nome = nome
-        self.preco = preco
+        self.preco = float(preco)
         self.estoque = int(estoque)
         self.categoria = categoria
+        self.fornecedor = fornecedor
 
     def apresentar(self):
         return (
-            f'Produto: {self.nome}\n'
-            f'Preço: {self.preco}\n'
-            f'Estoque: {self.estoque}\n'
-            f'Categoria: {self.categoria.nome}\n'
-            )
+            f"Produto: {self.nome}\n"
+            f"Preço: R$ {self.preco:.2f}\n"
+            f"Estoque: {self.estoque}\n"
+            f"Categoria: {self.categoria.nome}\n"
+            f"Fornecedor: {self.fornecedor.nome}\n"
+        )
 
     def calcular_valor_estoque(self):
-        valor_estoque = self.estoque * self.preco
-        return valor_estoque
+        return self.estoque * self.preco
 
     def adicionar_estoque(self, quantidade):
         if quantidade <= 0:
-            raise ValueError ("A quantidade deve ser maior que zero")
+            raise ValueError("A quantidade deve ser maior que zero.")
         self.estoque += quantidade
-        print(f'A quantidade {quantidade} foi adicionada no estoque.')
-        print(f'Quantidade em estoque atual {self.estoque}')
+        print(f"Adicionado {quantidade}. Atual: {self.estoque}")
 
     def remover_estoque(self, quantidade):
         if quantidade <= 0:
-            raise ValueError ("A quantidade deve ser maior que zero")
+            raise ValueError("A quantidade deve ser maior que zero.")
         if self.estoque < quantidade:
-            raise ValueError (f"Estoque insuficiente. Quantidade atual: {self.estoque}")
+            raise ValueError(f"Estoque insuficiente. Atual: {self.estoque}")
         self.estoque -= quantidade
-        print(f'A quantidade {quantidade} foi removida do estoque.')
-        print(f'Quantidade em estoque atual {self.estoque}')
+        print(f"Removido {quantidade}. Atual: {self.estoque}")
